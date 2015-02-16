@@ -1,0 +1,23 @@
+%h1 Каталог продукції
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Найменування
+      %th Ціна
+      %th Зображення
+      %th     
+      
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= link_to product.name, product
+        %td= sprintf("%0.02f", product.price)
+        %td= image_tag product.image.thumb
+        %td          
+          = link_to 'Редагувати', edit_product_path(product)
+          \|
+          = link_to 'Видалити', product, :method => :delete, :data => { :confirm => 'Ви впевнені?' }
+
+
+%p= link_to 'Додати товар', new_product_path, class: "btn btn-primary btn-xs"

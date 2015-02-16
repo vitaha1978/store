@@ -1,0 +1,9 @@
+%h1= @product.name
+
+%p= sprintf("%0.02f", @product.price)
+%p= image_tag @product.image, height: "100"
+
+%p
+  = link_to 'Редагувати', edit_product_path(@product)
+  \|
+  = link_to 'Повернутися', products_path
